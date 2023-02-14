@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="members">
+	<select id="list" resultType="com.ict.service.VO">
+		select * from members order by m_idx
+	</select>
+	
+	<insert id="insert" parameterType="com.ict.service.VO">
+        insert into members(m_idx, m_id, m_pw, m_name, m_addr, m_reg)
+        values(members_seq.nextval, #{m_id}, #{m_pw}, #{m_name}, #{m_addr}, sysdate)
+    </insert>
+    
+    <delete id="delete" parameterType="String">
+    
+    delete from members where m_idx = #{m_idx}
+    </delete>
+</mapper>
